@@ -1,0 +1,13 @@
+[package]
+name = "wolves-rust-defs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+console = "0.15.11"
+num_cpus = "1.16.0"
+serde = { version = "1.0", features = ["derive"], optional = true }
+sysinfo = "0.34.2"
+
+[features]
+serde_support = ["serde"]
