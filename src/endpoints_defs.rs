@@ -2,12 +2,12 @@ use core::fmt;
 use std::{collections::BTreeMap, net::IpAddr};
 
 #[cfg(feature = "serde_support")]
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 
 use crate::sysinfo_defs::SystemInfo;
 
 #[derive(Debug, Clone)]
-#[cfg_attr(feature = "serde_support", derive(Serialize))]
+#[cfg_attr(feature = "serde_support", derive(Serialize, Deserialize))]
 pub struct RemoteEndpoint {
     pub ip: IpAddr,
     pub sys_info: SystemInfo,
@@ -22,7 +22,8 @@ impl fmt::Display for RemoteEndpoint {
         write!(f, "Ip: {}, Threads: {}", self.ip, self.sys_info.cpu_virtual_cores)
     }
 }
-
+#[derive(Debug)]
+#[cfg_attr(feature = "serde_support", derive(Serialize, Deserialize, Clone))]
 pub struct RemoteEndpointSummary {
     pub total_cores: u32,
     pub total_endpoints: u32,
@@ -37,6 +38,7 @@ impl RemoteEndpointSummary {
 }
 
 #[derive(Debug)]
+#[cfg_attr(feature = "serde_support", derive(Serialize, Deserialize))]
 pub struct RemoteEndpoints {
     pub endpoints: Vec<RemoteEndpoint>,
 }
