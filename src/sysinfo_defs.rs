@@ -16,7 +16,6 @@ pub struct SystemDisks {
     pub file_system: Option<String>,
     pub free_space: Option<String>,
 }
-
 #[derive(Clone)]
 #[cfg_attr(feature = "serde_support", derive(Serialize, Deserialize))]
 pub struct SystemInfo {
