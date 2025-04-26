@@ -30,6 +30,7 @@ pub struct FlatBenchmarks {
 #[cfg_attr(feature = "serde_support", derive(Serialize, Deserialize, Clone))]
 pub struct FullSystemInfo {
     pub hostname: String,
+    pub app_version: Option<String>,
     pub ip: Option<IpAddr>,
     pub source_path: Option<String>,
     pub benchmarks: Vec<Benchmark>,
